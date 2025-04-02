@@ -672,6 +672,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = { filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' } },
+        cmake = {},
         ruff = {},
         pylsp = {
           settings = {
@@ -736,6 +737,7 @@ require('lazy').setup({
         'clang-format',
         'clangd',
         'cmake',
+        'cmake-language-server',
         'ruff',
         'pylsp',
         'markdownlint',
