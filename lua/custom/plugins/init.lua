@@ -3,64 +3,17 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  -- 'kylechui/nvim-surround',
-  -- version = '^3.0.0', -- Use for stability; omit to use `main` branch for the latest features
-  -- event = 'VeryLazy',
-  -- config = function()
-  --   require('nvim-surround').setup {
-  --     -- Configuration here, or leave empty to use defaults
-  --   }
-  -- end,
-  -- -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
-  -- {
-  --   'numToStr/Comment.nvim',
-  --   opts = {
-  --     -- add any options here
-  --   },
-  -- },
-  -- -- require('Comment').setup()
-  -- --
-  -- require('Comment').setup() {
-  --   ---Add a space b/w comment and the line
-  --   padding = true,
-  --   ---Whether the cursor should stay at its position
-  --   sticky = true,
-  --   ---Lines to be ignored while (un)comment
-  --   ignore = nil,
-  --   ---LHS of toggle mappings in NORMAL mode
-  --   toggler = {
-  --     ---Line-comment toggle keymap
-  --     line = '<leader>cc',
-  --     ---Block-comment toggle keymap
-  --     block = '<leader>cb',
-  --   },
-  --   ---LHS of operator-pending mappings in NORMAL and VISUAL mode
-  --   opleader = {
-  --     ---Line-comment keymap
-  --     line = 'cc',
-  --     ---Block-comment keymap
-  --     block = 'cb',
-  --   },
-  --   ---LHS of extra mappings
-  --   extra = {
-  --     ---Add comment on the line above
-  --     above = 'gcO',
-  --     ---Add comment on the line below
-  --     below = 'gco',
-  --     ---Add comment at the end of line
-  --     eol = 'gcA',
-  --   },
-  --   ---Enable keybindings
-  --   ---NOTE: If given `false` then the plugin won't create any mappings
-  --   mappings = {
-  --     ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-  --     basic = true,
-  --     ---Extra mapping; `gco`, `gcO`, `gcA`
-  --     extra = true,
-  --   },
-  --   ---Function to call before (un)comment
-  --   pre_hook = nil,
-  --   ---Function to call after (un)comment
-  --   post_hook = nil,
-  -- },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+
+      -- Only one of these is needed.
+      'nvim-telescope/telescope.nvim', -- optional
+      'ibhagwan/fzf-lua', -- optional
+      'echasnovski/mini.pick', -- optional
+    },
+    config = true,
+  },
 }
