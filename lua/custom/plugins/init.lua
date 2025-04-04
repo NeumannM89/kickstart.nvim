@@ -15,5 +15,7 @@ return {
       'echasnovski/mini.pick', -- optional
     },
     config = true,
+    vim.keymap.set('n', '<leader>gs', ':Neogit <CR>', { desc = '[g]it [s]tatus', silent = true, noremap = true }),
+    vim.keymap.set('n', '<leader>gb', ':Telescope git_branches<CR>', { desc = '[g]it [b]ranches', silent = true, noremap = true }),
   },
 }
