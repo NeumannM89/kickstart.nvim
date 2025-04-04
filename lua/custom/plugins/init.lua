@@ -15,9 +15,11 @@ return {
       'echasnovski/mini.pick', -- optional
     },
     config = true,
+
     vim.keymap.set('n', '<leader>gs', ':Neogit <CR>', { desc = '[g]it [s]tatus', silent = true, noremap = true }),
     vim.keymap.set('n', '<leader>gb', ':Telescope git_branches<CR>', { desc = '[g]it [b]ranches', silent = true, noremap = true }),
   },
+
   {
     'folke/flash.nvim',
     event = 'VeryLazy',
@@ -31,5 +33,9 @@ return {
       { "<leader>jR", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<leader>jT>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
+  },
+  {
+    'Civitasv/cmake-tools.nvim',
+    opts = {},
   },
 }
