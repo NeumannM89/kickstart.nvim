@@ -18,4 +18,18 @@ return {
     vim.keymap.set('n', '<leader>gs', ':Neogit <CR>', { desc = '[g]it [s]tatus', silent = true, noremap = true }),
     vim.keymap.set('n', '<leader>gb', ':Telescope git_branches<CR>', { desc = '[g]it [b]ranches', silent = true, noremap = true }),
   },
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
+    opts = {},
+  -- stylua: ignore
+    keys = {
+      { "<leader>jj", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "[J]ump" },
+      { "<leader>jt", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "[J]ump Treesitter" },
+      { "<leader>jr", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "<leader>jR", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<leader>jT>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },
 }
