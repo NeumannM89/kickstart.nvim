@@ -56,6 +56,7 @@ Kickstart Guide:
   Once you've completed that, you can continue working through **AND READING** the rest
   of the kickstart init.lua.
 
+
   Next, run AND READ `:help`.
     This will open up a help window with some basic information
     about reading, navigating and searching the builtin help documentation.
@@ -385,9 +386,7 @@ require('lazy').setup({
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
 
-      { "agoodshort/telescope-git-submodules.nvim",
-        dependencies = "akinsho/toggleterm.nvim",
-      },
+      { 'agoodshort/telescope-git-submodules.nvim', dependencies = 'akinsho/toggleterm.nvim' },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -433,7 +432,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
-      require("telescope").load_extension("git_submodules")
+      require('telescope').load_extension 'git_submodules'
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -1068,6 +1067,20 @@ require('lazy').setup({
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
+      --
+      local hipatterns = require 'mini.hipatterns'
+      hipatterns.setup {
+        highlighters = {
+          -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+          fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+          hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
+          todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
+          note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+
+          -- Highlight hex color strings (`#rrggbb`) using that color
+          hex_color = hipatterns.gen_highlighter.hex_color(),
+        },
+      }
     end,
   },
   { -- Highlight, edit, and navigate code
