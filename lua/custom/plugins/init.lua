@@ -2,6 +2,7 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+
 return {
   {
     'NeogitOrg/neogit',
@@ -15,8 +16,22 @@ return {
       'echasnovski/mini.pick', -- optional
     },
     config = true,
+    vim.keymap.set('n', '<leader>gs', function()
+      local file_dir = vim.fn.expand('%:p:h')
+      -- local git_root = vim.fn.system("git rev-parse --show-toplevel")
+        local git_root = vim.fn.system({ 'git', '-C', file_dir, 'rev-parse', '--show-toplevel' })
+      if vim.v.shell_error == 0 then
+        local path = vim.fn.trim(git_root)
+        -- vim.cmd("Neogit cwd=" .. path)
+        vim.cmd("Neogit cwd=" .. vim.fn.fnameescape(path))
+      else
+        vim.cmd("Neogit")
+  end
+end
 
-    vim.keymap.set('n', '<leader>gs', ':Neogit <CR>', { desc = '[g]it [s]tatus', silent = true, noremap = true }),
+
+      , { desc = '[g]it [s]tatus', silent = true, noremap = true }),
+    -- vim.keymap.set('n', '<leader>gs', ':Neogit <CR>', { desc = '[g]it [s]tatus', silent = true, noremap = true }),
     vim.keymap.set('n', '<leader>gb', ':Telescope git_branches<CR>', { desc = '[g]it [b]ranches', silent = true, noremap = true }),
   },
 
